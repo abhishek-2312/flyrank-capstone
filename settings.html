@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Manage your FlyRank AI account and SEO preferences." />
+  <title>Settings — FlyRank AI</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header class="header">
+    <nav class="nav container">
+      <a href="index.html" class="logo">
+        <span class="logo-icon">✦</span>
+        FlyRank
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html#features">Features</a></li>
+        <li><a href="index.html#how-it-works">How It Works</a></li>
+        <li><a href="settings.html" aria-current="page">Settings</a></li>
+      </ul>
+      <a href="index.html#contact" class="btn btn-primary btn-sm">Get Started</a>
+      <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+  </header>
+
+  <main class="settings-page">
+    <div class="container">
+      <header class="settings-header">
+        <h1>Settings</h1>
+        <p class="settings-subtitle">Manage your profile, site, and notification preferences.</p>
+      </header>
+
+      <div id="form-alert" class="form-alert" role="status" aria-live="polite" hidden></div>
+
+      <form id="settings-form" class="settings-form" novalidate>
+        <fieldset class="settings-section">
+          <legend class="settings-section-title">Profile</legend>
+
+          <div class="form-group">
+            <label for="displayName">Display name</label>
+            <input
+              type="text"
+              id="displayName"
+              name="displayName"
+              autocomplete="name"
+              placeholder="Jane Doe"
+              required
+              minlength="2"
+              maxlength="50"
+            />
+            <p class="form-error" id="displayName-error" role="alert"></p>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email address</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              autocomplete="email"
+              placeholder="you@company.com"
+              required
+            />
+            <p class="form-error" id="email-error" role="alert"></p>
+          </div>
+        </fieldset>
+
+        <fieldset class="settings-section">
+          <legend class="settings-section-title">Site configuration</legend>
+
+          <div class="form-group">
+            <label for="websiteUrl">Website URL</label>
+            <input
+              type="url"
+              id="websiteUrl"
+              name="websiteUrl"
+              autocomplete="url"
+              placeholder="https://example.com"
+              required
+            />
+            <p class="form-hint">Must include https:// or http://</p>
+            <p class="form-error" id="websiteUrl-error" role="alert"></p>
+          </div>
+
+          <div class="form-group">
+            <label for="crawlFrequency">Crawl frequency</label>
+            <select id="crawlFrequency" name="crawlFrequency" required>
+              <option value="">Select frequency</option>
+              <option value="daily">Daily</option>
+              <option value="weekly">Weekly</option>
+              <option value="monthly">Monthly</option>
+            </select>
+            <p class="form-error" id="crawlFrequency-error" role="alert"></p>
+          </div>
+
+          <div class="form-group">
+            <label for="timezone">Timezone</label>
+            <select id="timezone" name="timezone" required>
+              <option value="">Select timezone</option>
+              <option value="UTC">UTC</option>
+              <option value="America/New_York">Eastern Time (US)</option>
+              <option value="America/Chicago">Central Time (US)</option>
+              <option value="America/Denver">Mountain Time (US)</option>
+              <option value="America/Los_Angeles">Pacific Time (US)</option>
+              <option value="Europe/London">London</option>
+              <option value="Europe/Paris">Paris</option>
+              <option value="Asia/Kolkata">India (IST)</option>
+              <option value="Asia/Tokyo">Tokyo</option>
+              <option value="Australia/Sydney">Sydney</option>
+            </select>
+            <p class="form-error" id="timezone-error" role="alert"></p>
+          </div>
+        </fieldset>
+
+        <fieldset class="settings-section">
+          <legend class="settings-section-title">Notifications</legend>
+
+          <div class="form-group form-group--checkbox">
+            <label class="checkbox-label" for="emailAlerts">
+              <input type="checkbox" id="emailAlerts" name="emailAlerts" />
+              <span class="checkbox-text">
+                <strong>Email alerts</strong>
+                <span>Get notified when ranking changes exceed your threshold.</span>
+              </span>
+            </label>
+          </div>
+
+          <div class="form-group form-group--checkbox">
+            <label class="checkbox-label" for="weeklyReports">
+              <input type="checkbox" id="weeklyReports" name="weeklyReports" checked />
+              <span class="checkbox-text">
+                <strong>Weekly reports</strong>
+                <span>Receive a summary of SEO performance every Monday.</span>
+              </span>
+            </label>
+          </div>
+
+          <div class="form-group" id="alertThreshold-group">
+            <label for="alertThreshold">Ranking change threshold (%)</label>
+            <input
+              type="number"
+              id="alertThreshold"
+              name="alertThreshold"
+              min="1"
+              max="100"
+              step="1"
+              value="10"
+              placeholder="10"
+            />
+            <p class="form-hint">Only applies when email alerts are enabled.</p>
+            <p class="form-error" id="alertThreshold-error" role="alert"></p>
+          </div>
+        </fieldset>
+
+        <div class="form-actions">
+          <button type="button" class="btn btn-secondary" id="reset-btn">Reset</button>
+          <button type="submit" class="btn btn-primary">Save settings</button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <a href="index.html" class="logo">
+        <span class="logo-icon">✦</span>
+        FlyRank
+      </a>
+      <p>&copy; 2026 FlyRank AI. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="settings.js"></script>
+</body>
+</html>
