@@ -1,25 +1,24 @@
-# AI Workflow Comparison & Analysis
+# Week 2 Workflow Comparison & Reflection
 
-## Executive Summary
-This document compares two development approaches for building a User Settings Form: a single unconstrained vague prompt vs. a highly specified, constraint-driven prompt loop.
+## Overview
+For this drill, I built a validated User Settings form featuring display name, email, and notification frequency inputs using React, Next.js, Zod, and Tailwind CSS. I completed the task across two iterations to evaluate the impact of prompt engineering and structured specifications.
 
----
+## Round 1 vs. Round 2 Comparison
 
-## Concrete Branch Diffs
+### Round 1: Vague Prompting
+In Round 1, I relied on a single brief prompt requesting a settings form. 
+- **Correctness & Edge Cases**: The output provided basic markup without strict schema validation or edge-case handling for improper email formats.
+- **Accessibility**: Standard input elements lacked explicit label associations (`htmlFor` attributes) and screen-reader error messages.
+- **Review Effort**: High manual debugging was required to connect styles and ensure proper state management.
 
-### 1. Correctness & State Handling
-- **`feature/settings-vague`**: Used basic HTML5 input validation and unstructured state blocks. It failed to handle edge cases like invalid email formatting cleanly, leading to uncaught form submission resets.
-- **`feature/settings-spec`**: Implemented strict schema validation with React Hook Form and Zod. Form submission is completely gated until schema criteria are fully satisfied.
+### Round 2: Precise Prompting with Specifications
+In Round 2, I provided exact file references (`lib/schemas/`, `SettingsForm.tsx`), explicit validation logic with Zod, and UI styling constraints using Tailwind CSS v4.
+- **Correctness & Edge Cases**: The form cleanly validates field inputs using Zod, handling empty states, invalid email formats, and real-time field resets.
+- **Accessibility**: Labels correctly bind to inputs with unique identifiers, and validation errors are rendered visually and semantically.
+- **Review Effort**: Minimal code corrections were needed, drastically reducing integration friction.
 
-### 2. Accessibility (a11y)
-- **`feature/settings-vague`**: Missing explicit label associations (`htmlFor`). Error messages lacked `role="alert"` attributes, rendering form validation states inaccessible to screen readers.
-- **`feature/settings-spec`**: Full ARIA compliance with explicit `aria-invalid` bindings and clear semantic error feedback.
+## Key AI Mistake Caught
+During the setup, the initial PostCSS configuration caused a module import error (`Cannot find module '@tailwindcss/postcss'`) due to a mismatch between Tailwind CSS v3 directives and v4 PostCSS plugins. I caught this error when Next.js failed to evaluate the global stylesheet, subsequently updating `postcss.config.mjs` and dependencies to align with Tailwind v4 standards.
 
-### 3. Edge Cases & Review Effort
-- The vague implementation omitted loading indicators during form submission, allowing potential double-submission spam. The spec-driven output dynamically managed submission states to disable inputs appropriately.
-- **Review Effort**: The vague output required extensive manual refactoring to reach production standards, whereas the spec-driven branch required minimal styling adjustments.
-
----
-
-## AI Mistake Caught During Review
-During review of the code generated in `feature/settings-spec`, the AI initially forgot to append the `'use client'` directive at the top of the component file, which caused a Next.js Server Component boundary error upon rendering. I manually identified and resolved this issue.
+## Summary
+Directing AI with structured constraints and verified file layouts produces significantly cleaner, production-ready code compared to accepting single-pass vague outputs.
