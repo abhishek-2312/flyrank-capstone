@@ -1,9 +1,8 @@
-import SettingsForm from "../components/SettingsForm";
-
-export default function Home() {
+export default function Dashboard() {
   return (
-    <main className="min-h-screen p-8 bg-gray-50 flex flex-col justify-center items-center">
-      <SettingsForm />
-    </main>
+    <div>
+      <h1 className="text-2xl font-bold">Dashboard Overview</h1>
+      <p className="mt-4 text-slate-600">Welcome to Chakravyuh AI.</p>
+    </div>
   );
 }

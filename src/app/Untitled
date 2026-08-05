@@ -2,8 +2,8 @@ import './globals.css';
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'Chakravyuh AI',
-  description: 'Autonomous strategic sales intelligence engine',
+  title: 'FlyRank Capstone',
+  description: 'AI-driven strategic intelligence platform',
 };
 
 export default function RootLayout({
@@ -17,13 +17,13 @@ export default function RootLayout({
         <header className="border-b bg-white px-4 py-3 sm:px-8">
           <div className="mx-auto flex max-w-7xl items-center justify-between">
             <Link href="/" className="text-xl font-bold tracking-tight text-blue-600">
-              Chakravyuh AI
+              FlyRank
             </Link>
             <nav className="flex space-x-4 text-sm font-medium">
               <Link href="/" className="hover:text-blue-600">Dashboard</Link>
               <Link href="/analytics" className="hover:text-blue-600">Analytics</Link>
               <Link href="/settings" className="hover:text-blue-600">Settings</Link>
-              <Link href="/health" className="hover:text-blue-600">Health</Link>
+              <Link href="/health" className="hover:text-blue-600">Health Check</Link>
             </nav>
           </div>
         </header>
